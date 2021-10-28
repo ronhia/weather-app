@@ -1,6 +1,7 @@
 package com.challenge.weather.di
 
-import com.challenge.weather.data.repository.WeatherRepositoryImpl
+import com.challenge.weather.data.repository.weather.WeatherRemoteStorage
+import com.challenge.weather.data.repository.weather.WeatherRepositoryImpl
 import com.challenge.weather.domain.repository.WeatherRepository
 import com.challenge.weather.domain.usecases.GetWeatherByCoordinatesUseCase
 import com.challenge.weather.domain.usecases.GetWeatherByNameCityUseCase
@@ -10,8 +11,16 @@ import org.koin.dsl.module
 
 val weatherModules = module {
 
+    factory {
+        WeatherRemoteStorage(
+            weatherService = get()
+        )
+    }
+
     factory<WeatherRepository> {
-        WeatherRepositoryImpl()
+        WeatherRepositoryImpl(
+            weatherRemoteStorage = get()
+        )
     }
 
     factory {
@@ -26,6 +35,10 @@ val weatherModules = module {
         )
     }
 
-    viewModel { SearchViewModel() }
+    viewModel {
+        SearchViewModel(
+            getWeatherByNameCityUseCase = get()
+        )
+    }
 
 }

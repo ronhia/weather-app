@@ -53,8 +53,11 @@ dependencies {
     implementation(Libs.timber)
     implementation(Libs.koinAndroid)
     implementation(Libs.retrofit)
+    implementation(Libs.retrofitGson)
+    implementation(Libs.gson)
     implementation(Libs.navigationFragmentKtx)
     implementation(Libs.navigationUiKtx)
+    implementation(Libs.chucker)
 
     testImplementation("junit:junit:4.13.2")
 

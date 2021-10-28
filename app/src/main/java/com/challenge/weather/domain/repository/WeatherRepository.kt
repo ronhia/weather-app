@@ -6,6 +6,6 @@ interface WeatherRepository {
 
     fun getByCoordinates(coordinates: Coordinates)
 
-    fun getByNameCity(name: String)
+    suspend fun getByNameCity(name: String)
 
 }

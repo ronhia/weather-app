@@ -6,7 +6,7 @@ class GetWeatherByNameCityUseCase(
     private val weatherRepository: WeatherRepository
 ) {
 
-    fun execute(name: String) {
+    suspend fun execute(name: String) {
         weatherRepository.getByNameCity(name)
     }
 }
