@@ -9,7 +9,9 @@ import com.challenge.weather.R
 import com.challenge.weather.databinding.FragmentWeatherBinding
 import com.challenge.weather.presentation.base.BaseFragment
 import com.challenge.weather.presentation.features.weather.model.WeatherModel
+import com.challenge.weather.utils.WeatherUtils
 import com.challenge.weather.utils.extensions.kelvinToCelsius
+import com.challenge.weather.utils.extensions.loadImageFromUrl
 import com.challenge.weather.utils.extensions.withXDecimals
 import com.challenge.weather.utils.extensions.withoutZero
 
@@ -32,6 +34,8 @@ class WeatherFragment : BaseFragment<FragmentWeatherBinding>() {
 
     private fun displayWeather() = with(binding) {
         tvCity.text = weather.cityComplete
+        ivWeather.loadImageFromUrl(WeatherUtils.generateUrlIcon(weather.icon))
+        tvWeatherDescription.text = weather.description.replaceFirstChar { it.uppercase() }
         tvTemperature.text = getString(
             R.string.weather_temperature,
             weather.temperature.kelvinToCelsius().withXDecimals(0).withoutZero()

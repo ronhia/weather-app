@@ -6,4 +6,5 @@ object Versions {
     const val gson = "2.8.5"
     const val navigation = "2.3.5"
     const val chucker = "3.5.2"
+    const val glide = "4.12.0"
 }

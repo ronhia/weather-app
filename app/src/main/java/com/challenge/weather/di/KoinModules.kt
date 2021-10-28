@@ -7,7 +7,8 @@ object KoinModules {
     fun init() = loadKoinModules(
         listOf(
             weatherModules,
-            networkWeatherModules
+            networkWeatherModules,
+            cityModules
         )
     )
 

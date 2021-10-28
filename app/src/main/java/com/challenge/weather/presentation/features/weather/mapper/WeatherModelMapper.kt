@@ -7,6 +7,8 @@ fun Weather.toModel(): WeatherModel {
     return WeatherModel(
         country = country,
         city = city,
+        icon = icon,
+        description = description,
         temperature = temperature,
         windSpeed = windSpeed,
         humidity = humidity

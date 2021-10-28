@@ -8,5 +8,6 @@ object Libs {
     const val navigationFragmentKtx = "androidx.navigation:navigation-fragment-ktx:${Versions.navigation}"
     const val navigationUiKtx = "androidx.navigation:navigation-ui-ktx:${Versions.navigation}"
     const val chucker = "com.github.chuckerteam.chucker:library:${Versions.chucker}"
+    const val glide = "com.github.bumptech.glide:glide:${Versions.glide}"
 
 }

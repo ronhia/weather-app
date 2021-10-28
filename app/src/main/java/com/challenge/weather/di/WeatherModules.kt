@@ -37,7 +37,8 @@ val weatherModules = module {
 
     viewModel {
         SearchViewModel(
-            getWeatherByNameCityUseCase = get()
+            getWeatherByNameCityUseCase = get(),
+            getCitiesByNameUseCase = get()
         )
     }
 

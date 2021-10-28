@@ -60,6 +60,7 @@ dependencies {
     implementation(Libs.navigationFragmentKtx)
     implementation(Libs.navigationUiKtx)
     implementation(Libs.chucker)
+    implementation(Libs.glide)
 
     testImplementation("junit:junit:4.13.2")
 
