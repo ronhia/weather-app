@@ -9,6 +9,24 @@
         android:id="@+id/searchFragment"
         android:name="com.challenge.weather.presentation.features.search.SearchFragment"
         android:label="SearchFragment"
-        tools:layout="@layout/fragment_search" />
+        tools:layout="@layout/fragment_search">
+
+        <action
+            android:id="@+id/to_weatherFragment"
+            app:destination="@id/weatherFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/weatherFragment"
+        android:name="com.challenge.weather.presentation.features.weather.WeatherFragment"
+        android:label="WeatherFragment"
+        tools:layout="@layout/fragment_weather">
+
+        <argument
+            android:name="weather"
+            app:argType="com.challenge.weather.presentation.features.weather.model.WeatherModel" />
+
+    </fragment>
 
 </navigation>

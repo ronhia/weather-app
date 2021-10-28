@@ -2,4 +2,11 @@
     <string name="app_name">Weather App</string>
 
     <string name="search">Buscar</string>
+
+    <string name="weather_temperature">%s°c</string>
+    <string name="weather_wind_label">Viento</string>
+    <string name="weather_wind">%s m/s</string>
+    <string name="weather_humidity_label">Humedad</string>
+    <string name="weather_humidity">%s %%</string>
+
 </resources>
