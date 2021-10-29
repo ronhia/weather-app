@@ -15,6 +15,11 @@ interface CityRoomDao {
     @Query("SELECT COUNT(*) FROM CityRoom LIMIT 1")
     suspend fun existsCities(): Boolean
 
-    @Query("SELECT * FROM CityRoom WHERE upper(name) LIKE '%' || upper(:name) || '%'")
+    @Query(
+        """
+        SELECT * FROM CityRoom 
+        WHERE upper(name) || ' ' || upper(country) LIKE '%' || upper(:name) || '%'
+        """
+    )
     suspend fun searchByName(name: String): List<CityRoom>
 }
