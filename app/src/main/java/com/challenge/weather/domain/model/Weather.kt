@@ -3,7 +3,7 @@ package com.challenge.weather.domain.model
 data class Weather(
     val country: String,
     val city: String,
-    val date: Double,
+    val date: Long,
     val icon: String,
     val description: String,
     val temperature: Double,

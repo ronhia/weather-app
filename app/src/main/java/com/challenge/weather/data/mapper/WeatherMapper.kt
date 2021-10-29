@@ -7,7 +7,7 @@ fun WeatherBodyResponse.toDomain(): Weather {
     return Weather(
         country = sys.country,
         city = name,
-        date = date,
+        date = date * 1000,
         icon = weather.firstOrNull()?.icon.orEmpty(),
         description = weather.firstOrNull()?.description.orEmpty(),
         temperature = main.temp,

@@ -12,9 +12,13 @@ import com.challenge.weather.databinding.FragmentWeatherBinding
 import com.challenge.weather.presentation.base.BaseFragment
 import com.challenge.weather.presentation.features.weather.model.WeatherModel
 import com.challenge.weather.utils.WeatherUtils
+import com.challenge.weather.utils.extensions.asStringFormat
+import com.challenge.weather.utils.extensions.dateFormat
 import com.challenge.weather.utils.extensions.kelvinToCelsius
+import com.challenge.weather.utils.extensions.timeFormat
 import com.challenge.weather.utils.extensions.withXDecimals
 import com.challenge.weather.utils.extensions.withoutZero
+import java.util.Date
 
 class WeatherFragment : BaseFragment<FragmentWeatherBinding>() {
 
@@ -40,7 +44,8 @@ class WeatherFragment : BaseFragment<FragmentWeatherBinding>() {
 
     private fun displayWeather() = with(binding) {
         tvCity.text = weather.cityComplete
-        tvDate.text = "Viernes, 12 de octubre del 2021"
+        tvDate.text = Date(weather.date).asStringFormat(dateFormat)
+        tvTime.text = Date(weather.date).asStringFormat(timeFormat)
         ivWeather.load(WeatherUtils.generateUrlIcon(weather.icon))
         tvWeatherDescription.text = weather.description.replaceFirstChar { it.uppercase() }
         tvTemperature.text = getString(

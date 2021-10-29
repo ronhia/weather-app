@@ -9,7 +9,8 @@ data class WeatherBodyResponse(
     val main: WeatherMainResponse,
     val wind: WeatherWindResponse,
     val sys: WeatherSysResponse,
-    val date: Double,
+    @SerializedName("dt")
+    val date: Long,
     val timezone: Double,
     val id: Long,
     val name: String,
