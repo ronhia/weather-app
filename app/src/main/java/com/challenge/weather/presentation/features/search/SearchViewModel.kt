@@ -44,12 +44,14 @@ class SearchViewModel(
     }
 
     fun searchCities(name: String) {
-        Timber.e("searchCities: $name")
         searchJob?.cancel()
         searchJob = viewModelScope.launch {
-            val result = getCitiesByNameUseCase.execute(name)
-            Timber.e("result: $result")
-            _cities.value = result.toModel()
+            if (name.isEmpty()) {
+                _cities.value = emptyList()
+            } else {
+                val result = getCitiesByNameUseCase.execute(name)
+                _cities.value = result.toModel()
+            }
         }
     }
 }

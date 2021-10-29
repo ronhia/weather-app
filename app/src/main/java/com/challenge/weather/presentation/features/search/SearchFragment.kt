@@ -1,5 +1,6 @@
 package com.challenge.weather.presentation.features.search
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +12,7 @@ import com.challenge.weather.presentation.features.search.model.CityModel
 import com.challenge.weather.presentation.features.weather.model.WeatherModel
 import com.challenge.weather.utils.EventObserver
 import com.challenge.weather.utils.extensions.afterTextChanged
+import com.challenge.weather.utils.extensions.hideKeyboard
 import com.challenge.weather.utils.extensions.safeNavigateFromNavController
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -46,10 +48,16 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(), SearchAdapter.Sear
         })
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     private fun setupRecycler() = with(binding) {
         rvCities.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         rvCities.adapter = searchAdapter
+        rvCities.setOnTouchListener { view, _ ->
+            ietCity.clearFocus()
+            view.hideKeyboard()
+            false
+        }
     }
 
     private fun showCities(cities: List<CityModel>) {
@@ -62,11 +70,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(), SearchAdapter.Sear
     }
 
     private fun searchCities(name: String) {
-        if (name.isEmpty()) {
-            searchAdapter.items = emptyList()
-        } else {
-            searchViewModel.searchCities(name)
-        }
+        searchViewModel.searchCities(name)
     }
 
     private fun goToWeather(weather: WeatherModel) {
