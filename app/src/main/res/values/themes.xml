@@ -19,4 +19,9 @@
         <item name="android:windowBackground">@drawable/bg_splash</item>
     </style>
 
+    <style name="Theme.Weather.Dialog.Transparent" parent="@android:style/Theme.Black">
+        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+    </style>
+
 </resources>

@@ -4,17 +4,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
+import androidx.appcompat.app.AppCompatDialogFragment
 import androidx.viewbinding.ViewBinding
 
-abstract class BaseFragment<B : ViewBinding> : Fragment() {
+abstract class BaseDialogFragment<B : ViewBinding> : AppCompatDialogFragment() {
 
     private var _binding: B? = null
     val binding
         get() = _binding ?: throw IllegalStateException(
             "Cannot access view in after view destroyed and before view creation"
         )
-    private var progressDialog: ProgressDialogFragment? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -32,17 +31,4 @@ abstract class BaseFragment<B : ViewBinding> : Fragment() {
         _binding = null
     }
 
-    fun showProgressDialog(message: String? = null) {
-        if (progressDialog == null) progressDialog = ProgressDialogFragment()
-        progressDialog?.let {
-            it.message = message
-            if (!it.isVisible) {
-                it.show(childFragmentManager, ProgressDialogFragment.TAG)
-            }
-        }
-    }
-
-    fun hideProgressDialog() {
-        progressDialog?.dismiss()
-    }
 }

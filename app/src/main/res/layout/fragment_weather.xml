@@ -19,29 +19,54 @@
         android:orientation="vertical"
         app:layout_constraintGuide_end="32dp" />
 
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/iv_close"
+        android:layout_width="42dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
+        android:background="?android:attr/selectableItemBackgroundBorderless"
+        android:padding="6dp"
+        android:src="@drawable/ic_close"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tv_city"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="32dp"
         android:fontFamily="sans-serif"
         android:textColor="@color/black"
         android:textSize="20sp"
-        android:textStyle="normal"
-        app:layout_constraintEnd_toStartOf="@+id/gl_end"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/iv_close"
         app:layout_constraintStart_toStartOf="@+id/gl_start"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Juliaca, PE" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_date"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@+id/tv_city"
+        app:layout_constraintStart_toStartOf="@+id/gl_start"
+        app:layout_constraintTop_toBottomOf="@id/tv_city"
+        tools:text="Viernes 29 de Octubre" />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/iv_weather"
         android:layout_width="200dp"
         android:layout_height="200dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintEnd_toStartOf="@+id/gl_end"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="@+id/gl_start"
-        app:layout_constraintTop_toBottomOf="@+id/tv_city"
+        app:layout_constraintTop_toBottomOf="@+id/tv_date"
         tools:src="@drawable/ic_cloud" />
 
     <com.google.android.material.textview.MaterialTextView
@@ -61,46 +86,69 @@
         android:id="@+id/tv_weatherDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:textColor="@color/black"
+        android:layout_marginTop="16dp"
+        android:textColor="@color/magenta"
         android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/gl_end"
         app:layout_constraintStart_toStartOf="@+id/gl_start"
         app:layout_constraintTop_toBottomOf="@+id/tv_temperature"
         tools:text="Nublado" />
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/tv_windLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="65dp"
-        android:text="@string/weather_wind_label"
-        android:textColor="@color/black"
-        android:textSize="20sp"
+    <View
+        android:id="@+id/view_wind"
+        android:layout_width="0dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="56dp"
+        app:layout_constraintEnd_toStartOf="@+id/view_humidity"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/gl_start"
-        app:layout_constraintTop_toBottomOf="@+id/tv_temperature" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_weatherDescription" />
+
+    <View
+        android:id="@+id/view_humidity"
+        android:layout_width="0dp"
+        android:layout_height="80dp"
+        app:layout_constraintEnd_toStartOf="@+id/view_temperatureMax"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/view_wind"
+        app:layout_constraintTop_toTopOf="@+id/view_wind" />
+
+    <View
+        android:id="@+id/view_temperatureMax"
+        android:layout_width="0dp"
+        android:layout_height="80dp"
+        app:layout_constraintEnd_toStartOf="@+id/gl_end"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/view_humidity"
+        app:layout_constraintTop_toTopOf="@+id/view_wind" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tv_wind"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
         android:textColor="@color/black"
         android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tv_windLabel"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/tv_windLabel"
+        app:layout_constraintEnd_toEndOf="@+id/view_wind"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/view_wind"
+        app:layout_constraintTop_toTopOf="@+id/view_wind"
         tools:text="3 m/s" />
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/tv_humidityLabel"
+        android:id="@+id/tv_windLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="@string/weather_humidity_label"
+        android:text="@string/weather_wind_label"
         android:textColor="@color/black"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="@+id/gl_start"
-        app:layout_constraintTop_toBottomOf="@+id/tv_windLabel" />
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/view_wind"
+        app:layout_constraintEnd_toEndOf="@+id/view_wind"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/view_wind"
+        app:layout_constraintTop_toBottomOf="@+id/tv_wind" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tv_humidity"
@@ -109,8 +157,53 @@
         android:text="@string/weather_wind"
         android:textColor="@color/black"
         android:textSize="20sp"
-        app:layout_constraintEnd_toStartOf="@+id/gl_end"
-        app:layout_constraintTop_toTopOf="@+id/tv_humidityLabel"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/tv_humidityLabel"
+        app:layout_constraintEnd_toEndOf="@+id/view_humidity"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/view_humidity"
+        app:layout_constraintTop_toTopOf="@+id/view_humidity"
         tools:text="70%" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_humidityLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/weather_humidity_label"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/view_humidity"
+        app:layout_constraintEnd_toEndOf="@+id/view_humidity"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/view_humidity"
+        app:layout_constraintTop_toBottomOf="@+id/tv_humidity" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_temperatureMax"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/weather_wind"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/tv_temperatureMaxLabel"
+        app:layout_constraintEnd_toEndOf="@+id/view_temperatureMax"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/view_temperatureMax"
+        app:layout_constraintTop_toTopOf="@+id/view_temperatureMax"
+        tools:text="12°" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_temperatureMaxLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/weather_temperate_max_label"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/view_temperatureMax"
+        app:layout_constraintEnd_toEndOf="@+id/view_temperatureMax"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/view_temperatureMax"
+        app:layout_constraintTop_toBottomOf="@+id/tv_temperatureMax" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

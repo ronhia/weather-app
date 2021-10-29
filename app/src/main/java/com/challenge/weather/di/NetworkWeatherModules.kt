@@ -38,8 +38,6 @@ val networkWeatherModules = module {
     }
 }
 
-const val URL_WEATHER = "https://api.openweathermap.org/data/2.5/"
-
 fun provideChuckerInterceptor(context: Context): ChuckerInterceptor {
     return ChuckerInterceptor.Builder(context)
         .build()
@@ -61,7 +59,7 @@ fun provideHttpClientWeather(
 
 fun provideRetrofitWeather(httpClient: OkHttpClient): Retrofit {
     return Retrofit.Builder()
-        .baseUrl(URL_WEATHER)
+        .baseUrl(BuildConfig.OPEN_WEATHER_API_URL)
         .client(httpClient)
         .addConverterFactory(GsonConverterFactory.create())
         .build()

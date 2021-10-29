@@ -8,10 +8,10 @@ object Libs {
     const val navigationFragmentKtx = "androidx.navigation:navigation-fragment-ktx:${Versions.navigation}"
     const val navigationUiKtx = "androidx.navigation:navigation-ui-ktx:${Versions.navigation}"
     const val chucker = "com.github.chuckerteam.chucker:library:${Versions.chucker}"
-    const val glide = "com.github.bumptech.glide:glide:${Versions.glide}"
     const val roomRuntime = "androidx.room:room-runtime:${Versions.room}"
     const val roomCompiler = "androidx.room:room-compiler:${Versions.room}"
     const val roomKtx = "androidx.room:room-ktx:${Versions.room}"
     const val stetho = "com.facebook.stetho:stetho:${Versions.stetho}"
+    const val coil = "io.coil-kt:coil:${Versions.coil}"
 
 }

@@ -1,5 +1,6 @@
 package com.challenge.weather.data.remote.interceptor
 
+import com.challenge.weather.BuildConfig
 import okhttp3.Interceptor
 import okhttp3.Response
 
@@ -10,8 +11,8 @@ class WeatherInterceptor : Interceptor {
         val originalHttpUrl = original.url()
 
         val url = originalHttpUrl.newBuilder()
-            .addQueryParameter("APPID", "175945f4c1b842c4c106c57e80be4b83")
-            .addQueryParameter("lang", "es")
+            .addQueryParameter(API_KEY_PARAM, BuildConfig.OPEN_WEATHER_API_KEY)
+            .addQueryParameter(LANGUAGE_PARAM, LANGUAGE_VALUE)
             .build()
 
         val requestBuilder = original.newBuilder()
@@ -20,5 +21,12 @@ class WeatherInterceptor : Interceptor {
         val request = requestBuilder.build()
 
         return chain.proceed(request)
+    }
+
+    companion object {
+        const val LANGUAGE_PARAM = "lang"
+        const val LANGUAGE_VALUE = "es"
+
+        const val API_KEY_PARAM = "APPID"
     }
 }
