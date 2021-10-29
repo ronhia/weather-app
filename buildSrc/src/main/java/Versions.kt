@@ -7,4 +7,6 @@ object Versions {
     const val navigation = "2.3.5"
     const val chucker = "3.5.2"
     const val glide = "4.12.0"
+    const val room = "2.3.0"
+    const val stetho = "1.5.1"
 }

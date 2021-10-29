@@ -8,7 +8,8 @@ object KoinModules {
         listOf(
             weatherModules,
             networkWeatherModules,
-            cityModules
+            cityModules,
+            splashModules
         )
     )
 

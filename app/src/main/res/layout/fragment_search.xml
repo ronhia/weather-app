@@ -27,18 +27,6 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_search"
-        style="@style/Widget.Weather.Button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:paddingHorizontal="24dp"
-        android:text="@string/search_weather"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/til_city" />
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_cities"
         android:layout_width="0dp"
@@ -47,7 +35,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_search"
+        app:layout_constraintTop_toBottomOf="@+id/til_city"
         tools:itemCount="3"
         tools:listitem="@layout/item_search_city" />
 

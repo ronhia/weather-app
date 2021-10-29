@@ -2,6 +2,7 @@ plugins {
     id("com.android.application")
     id("kotlin-android")
     id("kotlin-parcelize")
+    id("kotlin-kapt")
     id("androidx.navigation.safeargs.kotlin")
 }
 
@@ -61,6 +62,11 @@ dependencies {
     implementation(Libs.navigationUiKtx)
     implementation(Libs.chucker)
     implementation(Libs.glide)
+    implementation(Libs.roomRuntime)
+    implementation(Libs.roomKtx)
+    implementation(Libs.stetho)
+
+    kapt(Libs.roomCompiler)
 
     testImplementation("junit:junit:4.13.2")
 

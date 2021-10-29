@@ -10,6 +10,7 @@ import com.challenge.weather.presentation.base.BaseFragment
 import com.challenge.weather.presentation.features.search.model.CityModel
 import com.challenge.weather.presentation.features.weather.model.WeatherModel
 import com.challenge.weather.utils.EventObserver
+import com.challenge.weather.utils.extensions.afterTextChanged
 import com.challenge.weather.utils.extensions.safeNavigateFromNavController
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -29,11 +30,12 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(), SearchAdapter.Sear
         super.onViewCreated(view, savedInstanceState)
         setupRecycler()
         events()
-        searchViewModel.searchCities("")
     }
 
     private fun events() {
-        binding.btnSearch.setOnClickListener { searchCity() }
+        binding.ietCity.afterTextChanged { name ->
+            searchCities(name)
+        }
 
         searchViewModel.cities.observe(viewLifecycleOwner, { cities ->
             showCities(cities)
@@ -59,9 +61,12 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(), SearchAdapter.Sear
         searchViewModel.searchByCity(nameCity)
     }
 
-    private fun searchCity() {
-        val nameCity = binding.ietCity.text.toString()
-        searchViewModel.searchByCity(nameCity)
+    private fun searchCities(name: String) {
+        if (name.isEmpty()) {
+            searchAdapter.items = emptyList()
+        } else {
+            searchViewModel.searchCities(name)
+        }
     }
 
     private fun goToWeather(weather: WeatherModel) {

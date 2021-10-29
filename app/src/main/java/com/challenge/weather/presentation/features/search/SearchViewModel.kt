@@ -11,6 +11,7 @@ import com.challenge.weather.presentation.features.search.model.CityModel
 import com.challenge.weather.presentation.features.weather.mapper.toModel
 import com.challenge.weather.presentation.features.weather.model.WeatherModel
 import com.challenge.weather.utils.Event
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import timber.log.Timber
 
@@ -18,6 +19,8 @@ class SearchViewModel(
     private val getWeatherByNameCityUseCase: GetWeatherByNameCityUseCase,
     private val getCitiesByNameUseCase: GetCitiesByNameUseCase,
 ) : ViewModel() {
+
+    private var searchJob: Job? = null
 
     private val _weather = MutableLiveData<Event<WeatherModel>>()
     val weather: LiveData<Event<WeatherModel>>
@@ -28,7 +31,6 @@ class SearchViewModel(
         get() = _cities
 
     fun searchByCity(name: String) {
-
         viewModelScope.launch {
             try {
                 val result = getWeatherByNameCityUseCase.execute(name)
@@ -42,8 +44,11 @@ class SearchViewModel(
     }
 
     fun searchCities(name: String) {
-        viewModelScope.launch {
+        Timber.e("searchCities: $name")
+        searchJob?.cancel()
+        searchJob = viewModelScope.launch {
             val result = getCitiesByNameUseCase.execute(name)
+            Timber.e("result: $result")
             _cities.value = result.toModel()
         }
     }
