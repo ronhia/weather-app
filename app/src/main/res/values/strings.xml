@@ -1,3 +1,17 @@
 <resources>
-    <string name="app_name">weather-app</string>
+    <string name="app_name">Weather</string>
+
+    <string name="loading">Cargando…</string>
+    <string name="loading_data">Cargando datos…</string>
+
+    <string name="search_city">Busca tu ciudad</string>
+    <string name="search_weather">Buscar clima</string>
+
+    <string name="weather_temperature">%s°</string>
+    <string name="weather_wind_label">Viento</string>
+    <string name="weather_wind">%s m/s</string>
+    <string name="weather_humidity_label">Humedad</string>
+    <string name="weather_humidity">%s %%</string>
+    <string name="weather_temperate_max_label">Máxima</string>
+
 </resources>
