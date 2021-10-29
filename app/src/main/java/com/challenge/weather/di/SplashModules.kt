@@ -15,6 +15,7 @@ val splashModules = module {
 
     viewModel {
         SplashViewModel(
+            verifyExistsCitiesUseCase = get(),
             loadCitiesUseCase = get()
         )
     }

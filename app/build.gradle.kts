@@ -17,6 +17,18 @@ android {
         versionName = "1.0.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField(
+            "String",
+            "OPEN_WEATHER_API_KEY",
+            project.properties["open_weather_api_key"] as String
+        )
+
+        buildConfigField(
+            "String",
+            "OPEN_WEATHER_API_URL",
+            project.properties["open_weather_api_url"] as String
+        )
     }
 
     buildTypes {
@@ -61,10 +73,10 @@ dependencies {
     implementation(Libs.navigationFragmentKtx)
     implementation(Libs.navigationUiKtx)
     implementation(Libs.chucker)
-    implementation(Libs.glide)
     implementation(Libs.roomRuntime)
     implementation(Libs.roomKtx)
     implementation(Libs.stetho)
+    implementation(Libs.coil)
 
     kapt(Libs.roomCompiler)
 

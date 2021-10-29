@@ -65,6 +65,9 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(), SearchAdapter.Sear
     }
 
     override fun onClickCity(city: CityModel) {
+        binding.root.hideKeyboard()
+        showProgressDialog()
+
         val nameCity = city.cityFull
         searchViewModel.searchByCity(nameCity)
     }
@@ -76,5 +79,6 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(), SearchAdapter.Sear
     private fun goToWeather(weather: WeatherModel) {
         val directions = SearchFragmentDirections.toWeatherFragment(weather)
         safeNavigateFromNavController(directions)
+        hideProgressDialog()
     }
 }

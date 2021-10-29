@@ -4,16 +4,21 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import coil.load
 import com.challenge.weather.R
 import com.challenge.weather.databinding.FragmentWeatherBinding
 import com.challenge.weather.presentation.base.BaseFragment
 import com.challenge.weather.presentation.features.weather.model.WeatherModel
 import com.challenge.weather.utils.WeatherUtils
+import com.challenge.weather.utils.extensions.asStringFormat
+import com.challenge.weather.utils.extensions.dateFormat
 import com.challenge.weather.utils.extensions.kelvinToCelsius
-import com.challenge.weather.utils.extensions.loadImageFromUrl
+import com.challenge.weather.utils.extensions.timeFormat
 import com.challenge.weather.utils.extensions.withXDecimals
 import com.challenge.weather.utils.extensions.withoutZero
+import java.util.Date
 
 class WeatherFragment : BaseFragment<FragmentWeatherBinding>() {
 
@@ -29,12 +34,19 @@ class WeatherFragment : BaseFragment<FragmentWeatherBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        events()
         displayWeather()
+    }
+
+    private fun events() = with(binding) {
+        ivClose.setOnClickListener { findNavController().navigateUp() }
     }
 
     private fun displayWeather() = with(binding) {
         tvCity.text = weather.cityComplete
-        ivWeather.loadImageFromUrl(WeatherUtils.generateUrlIcon(weather.icon))
+        tvDate.text = Date(weather.date).asStringFormat(dateFormat)
+        tvTime.text = Date(weather.date).asStringFormat(timeFormat)
+        ivWeather.load(WeatherUtils.generateUrlIcon(weather.icon))
         tvWeatherDescription.text = weather.description.replaceFirstChar { it.uppercase() }
         tvTemperature.text = getString(
             R.string.weather_temperature,
@@ -45,5 +57,9 @@ class WeatherFragment : BaseFragment<FragmentWeatherBinding>() {
             weather.windSpeed.withXDecimals(1).withoutZero()
         )
         tvHumidity.text = getString(R.string.weather_humidity, weather.humidity.withoutZero())
+        tvTemperatureMax.text = getString(
+            R.string.weather_temperature,
+            weather.temperatureMax.kelvinToCelsius().withXDecimals(0).withoutZero()
+        )
     }
 }

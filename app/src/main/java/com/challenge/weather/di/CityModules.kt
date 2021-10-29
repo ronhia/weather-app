@@ -7,6 +7,7 @@ import com.challenge.weather.data.repository.city.CityRepositoryImpl
 import com.challenge.weather.domain.repository.CityRepository
 import com.challenge.weather.domain.usecases.GetCitiesByNameUseCase
 import com.challenge.weather.domain.usecases.LoadCitiesUseCase
+import com.challenge.weather.domain.usecases.VerifyExistsCitiesUseCase
 import org.koin.android.ext.koin.androidApplication
 import org.koin.dsl.module
 
@@ -26,6 +27,12 @@ val cityModules = module {
     factory<CityRepository> {
         CityRepositoryImpl(
             cityLocalStorage = get()
+        )
+    }
+
+    factory {
+        VerifyExistsCitiesUseCase(
+            cityRepository = get()
         )
     }
 

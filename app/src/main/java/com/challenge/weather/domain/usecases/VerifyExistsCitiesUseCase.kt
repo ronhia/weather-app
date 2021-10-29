@@ -2,12 +2,12 @@ package com.challenge.weather.domain.usecases
 
 import com.challenge.weather.domain.repository.CityRepository
 
-class LoadCitiesUseCase(
+class VerifyExistsCitiesUseCase(
     private val cityRepository: CityRepository
 ) {
 
-    suspend fun execute() {
-        cityRepository.loadCities()
+    suspend fun execute(): Boolean {
+        return cityRepository.existsCities()
     }
 
 }

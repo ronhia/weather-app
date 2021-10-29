@@ -34,13 +34,11 @@ class SearchViewModel(
         viewModelScope.launch {
             try {
                 val result = getWeatherByNameCityUseCase.execute(name)
-                Timber.e("response: $result")
                 _weather.value = Event(result.toModel())
             } catch (e: Exception) {
                 Timber.e(e)
             }
         }
-
     }
 
     fun searchCities(name: String) {
