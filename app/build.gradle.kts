@@ -29,6 +29,12 @@ android {
             "OPEN_WEATHER_API_URL",
             project.properties["open_weather_api_url"] as String
         )
+
+        resValue(
+            "string",
+            "google_maps_key",
+            project.properties["google_maps_key"] as String
+        )
     }
 
     buildTypes {
@@ -77,6 +83,8 @@ dependencies {
     implementation(Libs.roomKtx)
     implementation(Libs.stetho)
     implementation(Libs.coil)
+    implementation("com.google.android.gms:play-services-maps:17.0.0")
+    implementation("com.google.android.gms:play-services-location:17.0.0")
 
     kapt(Libs.roomCompiler)
 

@@ -46,6 +46,10 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(), SearchAdapter.Sear
         searchViewModel.weather.observe(viewLifecycleOwner, EventObserver { weather ->
             goToWeather(weather)
         })
+
+        binding.fabLocation.setOnClickListener {
+            goToLocation()
+        }
     }
 
     @SuppressLint("ClickableViewAccessibility")
@@ -80,5 +84,10 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(), SearchAdapter.Sear
         val directions = SearchFragmentDirections.toWeatherFragment(weather)
         safeNavigateFromNavController(directions)
         hideProgressDialog()
+    }
+
+    private fun goToLocation() {
+        val directions = SearchFragmentDirections.toLocationFragment()
+        safeNavigateFromNavController(directions)
     }
 }
