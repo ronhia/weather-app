@@ -11,7 +11,8 @@ import com.challenge.weather.data.local.room.model.CityRoom
     entities = [
         CityRoom::class
     ],
-    version = 1
+    version = 1,
+    exportSchema = false
 )
 abstract class WeatherDatabase : RoomDatabase() {
 
@@ -21,19 +22,10 @@ abstract class WeatherDatabase : RoomDatabase() {
 
         const val DATABASE_NAME = "weather.db"
 
-        @Volatile
-        private var instance: WeatherDatabase? = null
-
-        private fun buildDatabase(context: Context) = Room
-            .databaseBuilder(context, WeatherDatabase::class.java, DATABASE_NAME)
-            .fallbackToDestructiveMigration()
-            .build()
-
-        fun getInstance(context: Context): WeatherDatabase {
-            if (instance == null) {
-                synchronized(WeatherDatabase::class) { instance = buildDatabase(context) }
-            }
-            return instance!!
+        fun buildDatabase(context: Context): WeatherDatabase {
+            return Room.databaseBuilder(context, WeatherDatabase::class.java, DATABASE_NAME)
+                .fallbackToDestructiveMigration()
+                .build()
         }
     }
 

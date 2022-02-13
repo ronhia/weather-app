@@ -1,7 +1,6 @@
 package com.challenge.weather.di
 
 import com.challenge.weather.data.local.json.CityJson
-import com.challenge.weather.data.local.room.WeatherDatabase
 import com.challenge.weather.data.repository.city.CityLocalStorage
 import com.challenge.weather.data.repository.city.CityRepositoryImpl
 import com.challenge.weather.domain.repository.CityRepository
@@ -12,8 +11,6 @@ import org.koin.android.ext.koin.androidApplication
 import org.koin.dsl.module
 
 val cityModules = module {
-
-    single { get<WeatherDatabase>().cityRoomDao() }
 
     single { CityJson(context = androidApplication()) }
 
