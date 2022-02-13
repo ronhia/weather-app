@@ -7,12 +7,12 @@ plugins {
 }
 
 android {
-    compileSdk = 31
+    compileSdk = 32
 
     defaultConfig {
         applicationId = "com.challenge.weather"
         minSdk = 21
-        targetSdk = 31
+        targetSdk = 32
         versionCode = 1
         versionName = "1.0.0"
 
@@ -62,23 +62,23 @@ android {
 dependencies {
 
     implementation("androidx.core:core-ktx:1.7.0")
-    implementation("androidx.appcompat:appcompat:1.3.1")
-    implementation("com.google.android.material:material:1.4.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.1")
-    implementation(Libs.timber)
-    implementation(Libs.koinAndroid)
-    implementation(Libs.retrofit)
-    implementation(Libs.retrofitGson)
-    implementation(Libs.gson)
-    implementation(Libs.navigationFragmentKtx)
-    implementation(Libs.navigationUiKtx)
-    implementation(Libs.chucker)
-    implementation(Libs.roomRuntime)
-    implementation(Libs.roomKtx)
-    implementation(Libs.stetho)
-    implementation(Libs.coil)
+    implementation("androidx.appcompat:appcompat:1.4.1")
+    implementation("com.google.android.material:material:1.5.0")
+    implementation("androidx.constraintlayout:constraintlayout:2.1.3")
+    implementation("com.jakewharton.timber:timber:5.0.1")
+    implementation("io.insert-koin:koin-android:3.1.2")
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation("com.google.code.gson:gson:2.8.8")
+    implementation("androidx.navigation:navigation-fragment-ktx:2.4.0")
+    implementation("androidx.navigation:navigation-ui-ktx:2.4.0")
+    implementation("com.github.chuckerteam.chucker:library:3.5.2")
+    implementation("androidx.room:room-runtime:2.4.1")
+    implementation("androidx.room:room-ktx:2.4.1")
+    implementation("com.facebook.stetho:stetho:1.6.0")
+    implementation("io.coil-kt:coil:1.4.0")
 
-    kapt(Libs.roomCompiler)
+    kapt("androidx.room:room-compiler:2.4.1")
 
     testImplementation("junit:junit:4.13.2")
 
