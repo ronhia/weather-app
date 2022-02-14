@@ -35,9 +35,15 @@ Se usó las siguientes librerías:
 * Coroutines - Para procesos en segundo plano
 * Stetho - Para visualizar el almacenamiento local
 * Coil - Para las carga de imágenes
+* Google Maps Places - Para la búsqueda de ciudades por el autocompletado
 
 # API de Clima
 Para obtener los datos de clima se usó el API de Open Weather https://openweathermap.org/api
 
 # Proceso de compilación
-Para compilar require poner su KEY de Open Weather en el parámetro `open_weather_api_key` del archivo `gradle.properties`
+Para compilar requiere poner estos parámetros en su archivo `local.properties`, y reemplazar los `PASTE_KEY` por sus keys.
+```
+open_weather_api_key=PASTE_KEY
+open_weather_api_url=https://api.openweathermap.org/data/2.5/
+google_maps_key=PASTE_KEY
+```
