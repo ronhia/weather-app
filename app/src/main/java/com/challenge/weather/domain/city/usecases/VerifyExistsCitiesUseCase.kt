@@ -1,6 +1,6 @@
-package com.challenge.weather.domain.usecases
+package com.challenge.weather.domain.city.usecases
 
-import com.challenge.weather.domain.repository.CityRepository
+import com.challenge.weather.domain.city.repository.CityRepository
 
 class VerifyExistsCitiesUseCase(
     private val cityRepository: CityRepository

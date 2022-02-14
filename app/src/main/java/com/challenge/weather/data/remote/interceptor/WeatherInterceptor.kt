@@ -11,7 +11,7 @@ class WeatherInterceptor : Interceptor {
         val originalHttpUrl = original.url()
 
         val url = originalHttpUrl.newBuilder()
-            .addQueryParameter(API_KEY_PARAM, BuildConfig.OPEN_WEATHER_API_KEY)
+            .addQueryParameter(API_KEY_PARAM, BuildConfig.open_weather_api_key)
             .addQueryParameter(LANGUAGE_PARAM, LANGUAGE_VALUE)
             .build()
 

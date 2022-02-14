@@ -1,6 +1,6 @@
-package com.challenge.weather.domain.repository
+package com.challenge.weather.domain.city.repository
 
-import com.challenge.weather.domain.model.City
+import com.challenge.weather.domain.city.model.City
 
 interface CityRepository {
 

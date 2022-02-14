@@ -4,8 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.challenge.weather.domain.usecases.LoadCitiesUseCase
-import com.challenge.weather.domain.usecases.VerifyExistsCitiesUseCase
+import com.challenge.weather.domain.city.usecases.LoadCitiesUseCase
+import com.challenge.weather.domain.city.usecases.VerifyExistsCitiesUseCase
 import com.challenge.weather.utils.Event
 import kotlinx.coroutines.launch
 

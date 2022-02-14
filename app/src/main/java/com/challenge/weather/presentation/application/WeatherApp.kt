@@ -8,12 +8,14 @@ import com.challenge.weather.BuildConfig
 import com.challenge.weather.di.KoinModules
 import com.challenge.weather.utils.TimberDebugTree
 import com.facebook.stetho.Stetho
+import com.google.android.libraries.places.api.Places
 import okhttp3.OkHttpClient
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 import timber.log.Timber
 import java.util.concurrent.TimeUnit
 
+@Suppress("unused")
 class WeatherApp : Application() {
 
     override fun onCreate() {
@@ -22,6 +24,7 @@ class WeatherApp : Application() {
         initKoin()
         initStetho()
         initCoil()
+        initPlaces()
     }
 
     private fun initTimber() {
@@ -56,4 +59,9 @@ class WeatherApp : Application() {
 
         Coil.setImageLoader(imageLoader)
     }
+
+    private fun initPlaces() {
+        Places.initialize(applicationContext, BuildConfig.google_maps_key)
+    }
+
 }

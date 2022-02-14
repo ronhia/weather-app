@@ -1,8 +1,9 @@
-package com.challenge.weather.data.mapper
+package com.challenge.weather.data.repository.city.mapper
 
 import com.challenge.weather.data.local.json.CityJson
 import com.challenge.weather.data.local.room.model.CityRoom
-import com.challenge.weather.domain.model.City
+import com.challenge.weather.domain.city.model.City
+import com.google.android.libraries.places.api.model.AutocompletePrediction
 
 fun List<CityRoom>.toDomain(): List<City> {
     return map { it.toDomain() }
@@ -24,4 +25,15 @@ fun CityJson.City.toRoom(): CityRoom {
         name = name,
         country = country
     )
+}
+
+fun AutocompletePrediction.toCity(): City {
+    return City(
+        name = getPrimaryText(null).toString(),
+        country = getSecondaryText(null).toString(),
+    )
+}
+
+fun List<AutocompletePrediction>.toCities(): List<City> {
+    return map { it.toCity() }
 }

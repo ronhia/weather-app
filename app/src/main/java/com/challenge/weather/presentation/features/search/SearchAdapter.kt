@@ -37,7 +37,8 @@ class SearchAdapter(
     ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(city: CityModel) = with(binding) {
-            tvCityName.text = city.cityFull
+            tvCityName.text = city.name
+            tvCountryName.text = city.country
 
             root.setOnClickListener { listener.onClickCity(city) }
         }

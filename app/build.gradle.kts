@@ -4,6 +4,7 @@ plugins {
     id("kotlin-parcelize")
     id("kotlin-kapt")
     id("androidx.navigation.safeargs.kotlin")
+    id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
 }
 
 android {
@@ -18,17 +19,6 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
-        buildConfigField(
-            "String",
-            "OPEN_WEATHER_API_KEY",
-            project.properties["open_weather_api_key"] as String
-        )
-
-        buildConfigField(
-            "String",
-            "OPEN_WEATHER_API_URL",
-            project.properties["open_weather_api_url"] as String
-        )
     }
 
     buildTypes {
@@ -77,6 +67,9 @@ dependencies {
     implementation("androidx.room:room-ktx:2.4.1")
     implementation("com.facebook.stetho:stetho:1.6.0")
     implementation("io.coil-kt:coil:1.4.0")
+
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.6.0")
+    implementation("com.google.android.libraries.places:places:2.5.0")
 
     kapt("androidx.room:room-compiler:2.4.1")
 

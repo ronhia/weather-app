@@ -1,4 +1,4 @@
-package com.challenge.weather.domain.model
+package com.challenge.weather.domain.weather.model
 
 data class Weather(
     val country: String,

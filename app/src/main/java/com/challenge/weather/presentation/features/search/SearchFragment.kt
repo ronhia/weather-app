@@ -11,7 +11,7 @@ import com.challenge.weather.presentation.base.BaseFragment
 import com.challenge.weather.presentation.features.search.model.CityModel
 import com.challenge.weather.presentation.features.weather.model.WeatherModel
 import com.challenge.weather.utils.EventObserver
-import com.challenge.weather.utils.extensions.afterTextChanged
+import com.challenge.weather.utils.extensions.doAfterTextChangedWithDelay
 import com.challenge.weather.utils.extensions.hideKeyboard
 import com.challenge.weather.utils.extensions.safeNavigateFromNavController
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -35,13 +35,13 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(), SearchAdapter.Sear
     }
 
     private fun events() {
-        binding.ietCity.afterTextChanged { name ->
-            searchCities(name)
+        binding.ietCity.doAfterTextChangedWithDelay(500) { text ->
+            searchCities(text)
         }
 
-        searchViewModel.cities.observe(viewLifecycleOwner, { cities ->
+        searchViewModel.cities.observe(viewLifecycleOwner) { cities ->
             showCities(cities)
-        })
+        }
 
         searchViewModel.weather.observe(viewLifecycleOwner, EventObserver { weather ->
             goToWeather(weather)

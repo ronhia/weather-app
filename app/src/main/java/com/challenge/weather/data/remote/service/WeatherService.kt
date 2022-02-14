@@ -1,6 +1,6 @@
 package com.challenge.weather.data.remote.service
 
-import com.challenge.weather.data.remote.model.WeatherBodyResponse
+import com.challenge.weather.data.repository.weather.model.WeatherBodyResponse
 import retrofit2.http.GET
 import retrofit2.http.Query
 
