@@ -1,7 +1,7 @@
-package com.challenge.weather.data.mapper
+package com.challenge.weather.data.repository.weather.mapper
 
-import com.challenge.weather.data.remote.model.WeatherBodyResponse
-import com.challenge.weather.domain.model.Weather
+import com.challenge.weather.data.repository.weather.model.WeatherBodyResponse
+import com.challenge.weather.domain.weather.model.Weather
 
 fun WeatherBodyResponse.toDomain(): Weather {
     return Weather(

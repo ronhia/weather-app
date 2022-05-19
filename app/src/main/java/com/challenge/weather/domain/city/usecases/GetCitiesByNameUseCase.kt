@@ -1,7 +1,7 @@
-package com.challenge.weather.domain.usecases
+package com.challenge.weather.domain.city.usecases
 
-import com.challenge.weather.domain.model.City
-import com.challenge.weather.domain.repository.CityRepository
+import com.challenge.weather.domain.city.model.City
+import com.challenge.weather.domain.city.repository.CityRepository
 
 class GetCitiesByNameUseCase(
     private val cityRepository: CityRepository

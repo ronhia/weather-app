@@ -59,7 +59,7 @@ fun provideHttpClientWeather(
 
 fun provideRetrofitWeather(httpClient: OkHttpClient): Retrofit {
     return Retrofit.Builder()
-        .baseUrl(BuildConfig.OPEN_WEATHER_API_URL)
+        .baseUrl(BuildConfig.open_weather_api_url)
         .client(httpClient)
         .addConverterFactory(GsonConverterFactory.create())
         .build()

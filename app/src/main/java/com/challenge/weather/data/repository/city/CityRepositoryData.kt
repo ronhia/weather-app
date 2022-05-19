@@ -1,12 +1,12 @@
 package com.challenge.weather.data.repository.city
 
-import com.challenge.weather.data.mapper.toDomain
-import com.challenge.weather.data.mapper.toRoom
-import com.challenge.weather.domain.model.City
-import com.challenge.weather.domain.repository.CityRepository
+import com.challenge.weather.data.repository.city.mapper.toRoom
+import com.challenge.weather.domain.city.model.City
+import com.challenge.weather.domain.city.repository.CityRepository
 
-class CityRepositoryImpl(
-    private val cityLocalStorage: CityLocalStorage
+class CityRepositoryData(
+    private val cityLocalStorage: CityLocalStorage,
+    private val cityRemoteStorage: CityRemoteStorage
 ) : CityRepository {
 
     override suspend fun loadCities() {
@@ -19,7 +19,7 @@ class CityRepositoryImpl(
     }
 
     override suspend fun getByName(name: String): List<City> {
-        return cityLocalStorage.searchByName(name).toDomain()
+        return cityRemoteStorage.getByName(name)
     }
 
 }

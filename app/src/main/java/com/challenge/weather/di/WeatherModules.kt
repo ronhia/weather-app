@@ -1,28 +1,28 @@
 package com.challenge.weather.di
 
 import com.challenge.weather.data.repository.weather.WeatherRemoteStorage
-import com.challenge.weather.data.repository.weather.WeatherRepositoryImpl
-import com.challenge.weather.domain.repository.WeatherRepository
-import com.challenge.weather.domain.usecases.GetWeatherByNameCityUseCase
+import com.challenge.weather.data.repository.weather.WeatherRepositoryData
+import com.challenge.weather.domain.weather.repository.WeatherRepository
+import com.challenge.weather.domain.weather.usecases.GetWeatherByNameCityUseCase
 import com.challenge.weather.presentation.features.search.SearchViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 val weatherModules = module {
 
-    factory {
+    single {
         WeatherRemoteStorage(
             weatherService = get()
         )
     }
 
-    factory<WeatherRepository> {
-        WeatherRepositoryImpl(
+    single<WeatherRepository> {
+        WeatherRepositoryData(
             weatherRemoteStorage = get()
         )
     }
 
-    factory {
+    single {
         GetWeatherByNameCityUseCase(
             weatherRepository = get()
         )

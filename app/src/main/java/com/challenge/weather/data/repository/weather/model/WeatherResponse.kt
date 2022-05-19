@@ -1,4 +1,4 @@
-package com.challenge.weather.data.remote.model
+package com.challenge.weather.data.repository.weather.model
 
 import com.google.gson.annotations.SerializedName
 

@@ -1,17 +1,22 @@
 package com.challenge.weather.utils.extensions
 
-import android.text.Editable
-import android.text.TextWatcher
 import android.widget.EditText
+import androidx.core.widget.doAfterTextChanged
+import java.util.Timer
+import java.util.TimerTask
 
-fun EditText.afterTextChanged(afterTextChanged: (String) -> Unit) {
-    this.addTextChangedListener(object : TextWatcher {
-        override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
-
-        override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
-
-        override fun afterTextChanged(editable: Editable) {
-            afterTextChanged.invoke(editable.toString())
-        }
-    })
+fun EditText.doAfterTextChangedWithDelay(delay: Long, block: (text: String) -> Unit) {
+    var timer = Timer()
+    doAfterTextChanged { editable ->
+        timer.cancel()
+        timer = Timer()
+        timer.schedule(
+            object : TimerTask() {
+                override fun run() {
+                    block.invoke(editable.toString())
+                }
+            },
+            delay
+        )
+    }
 }

@@ -1,10 +1,10 @@
 package com.challenge.weather.data.repository.weather
 
-import com.challenge.weather.data.mapper.toDomain
-import com.challenge.weather.domain.model.Weather
-import com.challenge.weather.domain.repository.WeatherRepository
+import com.challenge.weather.data.repository.weather.mapper.toDomain
+import com.challenge.weather.domain.weather.model.Weather
+import com.challenge.weather.domain.weather.repository.WeatherRepository
 
-class WeatherRepositoryImpl(
+class WeatherRepositoryData(
     private val weatherRemoteStorage: WeatherRemoteStorage
 ) : WeatherRepository {
 
