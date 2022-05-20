@@ -82,4 +82,6 @@ project.afterEvaluate {
     }
 
     test.dependsOn(jacocoTestReport)
+
+    assembleDebug.dependsOn(test)
 }

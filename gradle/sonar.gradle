@@ -7,7 +7,10 @@ subprojects {
             property "sonar.sources", "$projectDir/src/main/java/"
             property "sonar.tests", "$projectDir/src/test/java/"
             property "sonar.exclusions", "**/di/*"
-            property "sonar.coverage.jacoco.xmlReportPaths", "$buildDir/reports/jacoco/createDebugUnitTestCoverageReport/createDebugUnitTestCoverageReport.xml"
+            property "sonar.coverage.jacoco.xmlReportPaths", [
+                    "$buildDir/reports/jacoco/jacocoDebugReport/jacocoDebugReport.xml",
+                    "$buildDir/reports/jacoco/jacocoReleaseReport/jacocoReleaseReport.xml"
+            ]
         }
     }
 }
