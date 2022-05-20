@@ -1,6 +1,13 @@
 apply plugin: 'jacoco'
 
 project.afterEvaluate {
+
+    jacoco {
+        toolVersion "0.8.7"
+    }
+
+    def jacocoTestReport = task jacocoTestReport(type: JacocoReport)
+
     // Reune los nombres de tipo de compilacion y tipo de producto en una lista
     def buildTypes = android.buildTypes.collect { type -> type.name }
     def productFlavors = android.productFlavors.collect { flavor -> flavor.name }
@@ -18,7 +25,7 @@ project.afterEvaluate {
 
             def testTaskName = "test${sourceName.capitalize()}UnitTest"
 
-            task "create${sourceName.capitalize()}UnitTestCoverageReport"(type: JacocoReport, dependsOn: "$testTaskName") {
+            def reportTask = task "jacoco${sourceName.capitalize()}Report"(type: JacocoReport, dependsOn: "$testTaskName") {
                 group = "Reporting"
                 description = "Generate Jacoco coverage reports on the ${sourceName.capitalize()} build."
 
@@ -69,6 +76,10 @@ project.afterEvaluate {
                     html.enabled = true
                 }
             }
+
+            jacocoTestReport.dependsOn(reportTask)
         }
     }
+
+    test.dependsOn(jacocoTestReport)
 }
