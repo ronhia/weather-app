@@ -7,6 +7,8 @@ plugins {
     id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
 }
 
+apply(from = rootProject.file("gradle/jacoco.gradle"))
+
 android {
     compileSdk = 32
 
