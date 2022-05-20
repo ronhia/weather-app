@@ -3,6 +3,7 @@ plugins {
     id("com.android.application") version "7.1.1" apply false
     id("com.android.library") version "7.1.1" apply false
     id("org.jetbrains.kotlin.android") version "1.6.10" apply false
+    id("org.sonarqube") version "3.3"
 }
 
 buildscript {
@@ -12,6 +13,8 @@ buildscript {
         classpath("org.jacoco:org.jacoco.core:0.8.7")
     }
 }
+
+apply(from = rootProject.file("gradle/sonar.gradle"))
 
 tasks.register("clean", Delete::class) {
     delete(rootProject.buildDir)
