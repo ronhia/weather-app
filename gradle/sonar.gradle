@@ -15,4 +15,4 @@ subprojects {
     }
 }
 
-project.tasks["sonarqube"].dependsOn("createDebugUnitTestCoverageReport")
+project.tasks["sonarqube"].dependsOn("test")
