@@ -7,6 +7,8 @@ plugins {
     id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
 }
 
+apply(from = rootProject.file("gradle/jacoco.gradle"))
+
 android {
     compileSdk = 32
 
@@ -42,6 +44,11 @@ android {
 
     kotlinOptions {
         jvmTarget = "1.8"
+
+        freeCompilerArgs = freeCompilerArgs + listOf(
+            // Enable experimental coroutines APIs, including Flow
+            "-Xopt-in=kotlinx.coroutines.ExperimentalCoroutinesApi"
+        )
     }
 
     buildFeatures {
@@ -74,6 +81,8 @@ dependencies {
     kapt("androidx.room:room-compiler:2.4.1")
 
     testImplementation("junit:junit:4.13.2")
+    testImplementation("org.mockito:mockito-core:4.5.1")
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.0")
 
     androidTestImplementation("androidx.test.ext:junit:1.1.3")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
